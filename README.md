@@ -45,26 +45,27 @@ All libraries are open-source and available through standard package managers.
 ---
 
 ## 💻 Installation & Launch
-
-### 🔹 On Linux
-#### Prerequisites:
+**Linux:**
 ```bash
 sudo apt install build-essential cmake libsdl2-dev libglew-dev libglu1-mesa-dev
-```
-
-#### Build:
-```bash
 git clone https://github.com/EtriZe/VisualDuneGenerator.git
 cd VisualDuneGenerator
+git clone https://github.com/ocornut/imgui.git
 mkdir build && cd build
-cmake ..
-make -j
+cmake .. && make -j && ./dune_viewer
 ```
 
-#### Run:
+**Windows (MSYS2):**
 ```bash
-./dune_viewer
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-SDL2 mingw-w64-x86_64-glew
+git clone https://github.com/EtriZe/VisualDuneGenerator.git
+cd VisualDuneGenerator
+git clone https://github.com/ocornut/imgui.git
+mkdir build && cd build
+cmake -G "MinGW Makefiles" .. && mingw32-make && ./dune_viewer.exe
 ```
+
+---
 
 #### Result:
 A window titled **"Dune Studio — Advanced Viewer"** opens with:
@@ -148,29 +149,6 @@ Vertices are rendered using OpenGL, either in **wireframe** or **filled** mode.
 
 ---
 
-## ✨ Quick Start Examples
-
-**Linux:**
-```bash
-sudo apt install build-essential cmake libsdl2-dev libglew-dev libglu1-mesa-dev
-git clone https://github.com/EtriZe/VisualDuneGenerator.git
-cd VisualDuneGenerator
-git clone https://github.com/ocornut/imgui.git
-mkdir build && cd build
-cmake .. && make -j && ./dune_viewer
-```
-
-**Windows (MSYS2):**
-```bash
-pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-SDL2 mingw-w64-x86_64-glew
-git clone https://github.com/EtriZe/VisualDuneGenerator.git
-cd VisualDuneGenerator
-git clone https://github.com/ocornut/imgui.git
-mkdir build && cd build
-cmake -G "MinGW Makefiles" .. && mingw32-make && ./dune_viewer.exe
-```
-
----
 
 ## 👨‍💻 Author
 Developed by [Your Name or Alias].  
