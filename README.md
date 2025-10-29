@@ -5,6 +5,10 @@
 **Dune Viewer** is an interactive tool for visualizing **procedurally generated sand dunes** using **Perlin / FBM / Ridged noise** with **anisotropy** and **domain warp**.  
 All parameters can be modified in real time through **Dear ImGui**, allowing instant visual feedback in 3D.
 
+Exemple : 
+![image](https://github.com/user-attachments/assets/9cbadd41-8f78-45f6-8cb2-83407c09b939)
+
+
 ---
 
 ## 🧭 Main Features
