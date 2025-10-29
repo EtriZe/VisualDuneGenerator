@@ -1,6 +1,6 @@
 # 🌵 Dune Viewer — Procedural Dune Visualizer (C++ / SDL2 / ImGui / OpenGL)
 
-( /!\ This code was generated with a big help of ChatGPT ! /!\)
+( /!\ This code was generated with a big help of ChatGPT ! /!\ )
 
 [🇫🇷 Read this in French](README.fr.md)
 
