@@ -3,6 +3,9 @@
 **Dune Viewer** est un outil interactif permettant de visualiser des dunes de sable générées procéduralement à partir de **bruits de Perlin / FBM / Ridged** avec **anisotropie** et **domain warp**.  
 Le programme permet de modifier tous les paramètres en temps réel via **Dear ImGui**, et d’observer instantanément le résultat en 3D.
 
+Exemple : 
+![image](https://github.com/user-attachments/assets/9cbadd41-8f78-45f6-8cb2-83407c09b939)
+
 ---
 
 ## 🧭 Fonctionnalités principales
