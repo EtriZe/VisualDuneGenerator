@@ -1,107 +1,109 @@
-# 🌵 Dune Viewer — Visualiseur de dunes procédurales (C++ / SDL2 / ImGui / OpenGL)
+# 🌵 Dune Viewer — Procedural Dune Visualizer (C++ / SDL2 / ImGui / OpenGL)
 
-**Dune Viewer** est un outil interactif permettant de visualiser des dunes de sable générées procéduralement à partir de **bruits de Perlin / FBM / Ridged** avec **anisotropie** et **domain warp**.  
-Le programme permet de modifier tous les paramètres en temps réel via **Dear ImGui**, et d’observer instantanément le résultat en 3D.
+[🇫🇷 Read this in French](README.fr.md)
 
----
-
-## 🧭 Fonctionnalités principales
-- Génération de dunes à partir de **Perlin noise** et de **Fractal Brownian Motion (FBM)**
-- Paramètres ajustables en direct (octaves, gain, lacunarity, amplitude, etc.)
-- **Anisotropie** pour simuler la direction du vent
-- **Domain warp** pour les turbulences du vent
-- Mode **Ridged** pour des crêtes plus nettes
-- Vue 3D libre (rotation, zoom, translation)
-- Rendu **wireframe** ou **plein**
-- Compatible **Linux** et **Windows**
+**Dune Viewer** is an interactive tool for visualizing **procedurally generated sand dunes** using **Perlin / FBM / Ridged noise** with **anisotropy** and **domain warp**.  
+All parameters can be modified in real time through **Dear ImGui**, allowing instant visual feedback in 3D.
 
 ---
 
-## 🎮 Contrôles
-| Action | Résultat |
-|--------|-----------|
-| **Clic droit + déplacer la souris** | Rotation de la caméra |
-| **Molette de la souris** | Zoom avant / arrière |
-| **Interface ImGui** | Ajuste en temps réel tous les paramètres |
+## 🧭 Main Features
+- Generates dunes from **Perlin noise** and **Fractal Brownian Motion (FBM)**
+- Real-time adjustable parameters (octaves, gain, lacunarity, amplitude, etc.)
+- **Anisotropy** to simulate wind direction
+- **Domain warp** for natural turbulence
+- **Ridged mode** for sharp dune crests
+- Free 3D view (rotation, zoom, pan)
+- **Wireframe** or **solid** rendering
+- Compatible with **Linux** and **Windows**
 
 ---
 
-## ⚙️ Dépendances
-- **SDL2** — pour la fenêtre et les événements  
-- **OpenGL** + **GLU** — pour le rendu 3D  
-- **GLEW** — pour l’accès aux extensions OpenGL  
-- **Dear ImGui** — pour l’interface graphique  
-
-Toutes les bibliothèques sont open source et disponibles via les gestionnaires de paquets.
+## 🎮 Controls
+| Action | Effect |
+|--------|---------|
+| **Right-click + drag** | Rotate the camera |
+| **Mouse wheel** | Zoom in / out |
+| **ImGui interface** | Adjust all parameters in real time |
 
 ---
 
-## 💻 Installation et lancement
+## ⚙️ Dependencies
+- **SDL2** — window and input handling  
+- **OpenGL** + **GLU** — 3D rendering  
+- **GLEW** — OpenGL extension loader  
+- **Dear ImGui** — user interface  
 
-### 🔹 Sous Linux
-#### Prérequis :
+All libraries are open-source and available through standard package managers.
+
+---
+
+## 💻 Installation & Launch
+
+### 🔹 On Linux
+#### Prerequisites:
 ```bash
 sudo apt install build-essential cmake libsdl2-dev libglew-dev libglu1-mesa-dev
 ```
 
-#### Compilation :
+#### Build:
 ```bash
-git clone https://github.com/<ton-utilisateur>/dune-viewer.git
+git clone https://github.com/<your-username>/dune-viewer.git
 cd dune-viewer
 mkdir build && cd build
 cmake ..
 make -j
 ```
 
-#### Lancement :
+#### Run:
 ```bash
 ./dune_viewer
 ```
 
-#### Résultat :
-Une fenêtre “**Dune Studio — Advanced Viewer**” s’ouvre, avec :
-- Le rendu 3D des dunes au centre
-- Les contrôles ImGui à droite pour modifier les paramètres
+#### Result:
+A window titled **"Dune Studio — Advanced Viewer"** opens with:
+- 3D dunes rendered in real time
+- ImGui controls on the right for interactive tuning
 
 ---
 
-### 🔹 Sous Windows
+### 🔹 On Windows
 
-#### Option 1 — Avec **MSYS2 + MinGW64**
-1. Installer MSYS2 : [https://www.msys2.org/](https://www.msys2.org/)
-2. Ouvrir **MSYS2 MinGW64** et exécuter :
+#### Option 1 — **MSYS2 + MinGW64**
+1. Install MSYS2: [https://www.msys2.org/](https://www.msys2.org/)
+2. Open **MSYS2 MinGW64** and run:
    ```bash
    pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-SDL2 mingw-w64-x86_64-glew
    ```
-3. Cloner le projet :
+3. Clone the project:
    ```bash
-   git clone https://github.com/<ton-utilisateur>/dune-viewer.git
+   git clone https://github.com/<your-username>/dune-viewer.git
    cd dune-viewer
    mkdir build && cd build
    cmake -G "MinGW Makefiles" ..
    mingw32-make
    ```
-4. Lancer :
+4. Launch:
    ```bash
    ./dune_viewer.exe
    ```
 
-#### Option 2 — Avec **Visual Studio + vcpkg**
-1. Installer [Visual Studio Community](https://visualstudio.microsoft.com/fr/vs/)
-2. Installer [vcpkg](https://github.com/microsoft/vcpkg) puis :
+#### Option 2 — **Visual Studio + vcpkg**
+1. Install [Visual Studio Community](https://visualstudio.microsoft.com/)
+2. Install [vcpkg](https://github.com/microsoft/vcpkg) then run:
    ```bash
    vcpkg install sdl2 glew
    ```
-3. Ouvrir le dossier du projet dans Visual Studio (CMakeLists.txt est détecté automatiquement)
-4. Lancer la **build** puis exécuter `dune_viewer`
+3. Open the project folder in Visual Studio (it will detect `CMakeLists.txt`)
+4. Build and run `dune_viewer`
 
 ---
 
-## 🏗️ Structure du projet
+## 🏗️ Project Structure
 ```
 dune-viewer/
-├── dune_viewer.cpp       ← code principal
-├── imgui/                ← dossier Dear ImGui (ou submodule)
+├── dune_viewer.cpp       ← main source file
+├── imgui/                ← Dear ImGui (as folder or submodule)
 │   ├── imgui.cpp, backends/, etc.
 ├── CMakeLists.txt
 ├── LICENSE
@@ -111,53 +113,55 @@ dune-viewer/
 
 ---
 
-## 🧠 Détails techniques
-Le terrain est un plan quadrillé (ex: 128×128 vertices).  
-Chaque hauteur `z` est calculée par :
+## 🧠 Technical Details
+The terrain is a fixed grid (e.g. 128×128 vertices).  
+Each vertex height `z` is computed as:
 
 ```
 z = amplitude * f(x, y)
 ```
 
-où `f(x, y)` est un **bruit fractal (FBM)** avec :
-- **Rotation** : direction du vent  
-- **Stretch** : anisotropie sur X/Y  
-- **Warp** : distorsion du domaine  
-- **RidgedFBM** : accentuation des crêtes  
+Where `f(x, y)` is a **fractal noise function (FBM)** with:
+- **Rotation** → wind direction  
+- **Stretching** → anisotropy along X/Y  
+- **Domain warp** → noise distortion  
+- **RidgedFBM** → accentuates dune crests  
 
-Les vertices sont ensuite rendus sous OpenGL, en mode **wireframe** ou **filled** selon la configuration.
+Vertices are rendered using OpenGL, either in **wireframe** or **filled** mode.
 
 ---
 
-## 📜 Licences
-| Composant | Licence |
+## 📜 Licenses
+| Component | License |
 |------------|----------|
-| **Ton code (Dune Viewer)** | MIT |
+| **Your code (Dune Viewer)** | MIT |
 | **Dear ImGui** | MIT (© Omar Cornut) |
 | **SDL2** | zlib |
 | **GLEW** | BSD / MIT-like |
-| **GLU** | dépend de la distribution (non redistribué ici) |
+| **GLU** | depends on the system distribution (not redistributed here) |
 
 ---
 
-## ✨ Exemple de lancement rapide
-Sous Linux :
+## ✨ Quick Start Examples
+
+**Linux:**
 ```bash
 sudo apt install build-essential cmake libsdl2-dev libglew-dev libglu1-mesa-dev
-git clone https://github.com/<ton-utilisateur>/dune-viewer.git
+git clone https://github.com/<your-username>/dune-viewer.git
 cd dune-viewer && mkdir build && cd build
 cmake .. && make -j && ./dune_viewer
 ```
-Sous Windows (MSYS2) :
+
+**Windows (MSYS2):**
 ```bash
 pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-SDL2 mingw-w64-x86_64-glew
-git clone https://github.com/<ton-utilisateur>/dune-viewer.git
+git clone https://github.com/<your-username>/dune-viewer.git
 cd dune-viewer && mkdir build && cd build
 cmake -G "MinGW Makefiles" .. && mingw32-make && ./dune_viewer.exe
 ```
 
 ---
 
-## 🧑‍💻 Auteur
-Développé par Valentin Barrère.  
-Basé sur **Dear ImGui (MIT)** et **SDL2 (zlib)**.
+## 👨‍💻 Author
+Developed by [Your Name or Alias].  
+Based on **Dear ImGui (MIT)** and **SDL2 (zlib)**.
