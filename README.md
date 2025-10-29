@@ -54,8 +54,8 @@ sudo apt install build-essential cmake libsdl2-dev libglew-dev libglu1-mesa-dev
 
 #### Build:
 ```bash
-git clone https://github.com/<your-username>/dune-viewer.git
-cd dune-viewer
+git clone https://github.com/EtriZe/VisualDuneGenerator.git
+cd VisualDuneGenerator
 mkdir build && cd build
 cmake ..
 make -j
@@ -83,8 +83,8 @@ A window titled **"Dune Studio — Advanced Viewer"** opens with:
    ```
 3. Clone the project:
    ```bash
-   git clone https://github.com/<your-username>/dune-viewer.git
-   cd dune-viewer
+   git clone https://github.com/EtriZe/VisualDuneGenerator.git
+   cd VisualDuneGenerator
    mkdir build && cd build
    cmake -G "MinGW Makefiles" ..
    mingw32-make
