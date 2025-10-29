@@ -147,14 +147,14 @@ Les vertices sont ensuite rendus sous OpenGL, en mode **wireframe** ou **filled*
 Sous Linux :
 ```bash
 sudo apt install build-essential cmake libsdl2-dev libglew-dev libglu1-mesa-dev
-git clone https://github.com/EtriZe/dune-viewer.git
+git clone https://github.com/EtriZe/VisualDuneGenerator.git
 cd dune-viewer && mkdir build && cd build
 cmake .. && make -j && ./dune_viewer
 ```
 Sous Windows (MSYS2) :
 ```bash
 pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-SDL2 mingw-w64-x86_64-glew
-git clone https://github.com/EtriZe/dune-viewer.git
+git clone https://github.com/EtriZe/VisualDuneGenerator.git
 cd dune-viewer && mkdir build && cd build
 cmake -G "MinGW Makefiles" .. && mingw32-make && ./dune_viewer.exe
 ```
