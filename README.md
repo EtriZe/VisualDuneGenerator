@@ -151,5 +151,5 @@ Vertices are rendered using OpenGL, either in **wireframe** or **filled** mode.
 
 
 ## 👨‍💻 Author
-Developed by [Your Name or Alias].  
+Developed by EtriZe.  
 Based on **Dear ImGui (MIT)** and **SDL2 (zlib)**.
