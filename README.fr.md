@@ -41,25 +41,27 @@ Toutes les bibliothèques sont open source et disponibles via les gestionnaires 
 
 ## 💻 Installation et lancement
 
-### 🔹 Sous Linux
-#### Prérequis :
+**Linux:**
 ```bash
 sudo apt install build-essential cmake libsdl2-dev libglew-dev libglu1-mesa-dev
-```
-
-#### Compilation :
-```bash
-git clone https://github.com/<ton-utilisateur>/dune-viewer.git
-cd dune-viewer
+git clone https://github.com/EtriZe/VisualDuneGenerator.git
+cd VisualDuneGenerator
+git clone https://github.com/ocornut/imgui.git
 mkdir build && cd build
-cmake ..
-make -j
+cmake .. && make -j && ./dune_viewer
 ```
 
-#### Lancement :
+**Windows (MSYS2):**
 ```bash
-./dune_viewer
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-SDL2 mingw-w64-x86_64-glew
+git clone https://github.com/EtriZe/VisualDuneGenerator.git
+cd VisualDuneGenerator
+git clone https://github.com/ocornut/imgui.git
+mkdir build && cd build
+cmake -G "MinGW Makefiles" .. && mingw32-make && ./dune_viewer.exe
 ```
+
+---
 
 #### Résultat :
 Une fenêtre “**Dune Studio — Advanced Viewer**” s’ouvre, avec :
@@ -140,24 +142,6 @@ Les vertices sont ensuite rendus sous OpenGL, en mode **wireframe** ou **filled*
 | **SDL2** | zlib |
 | **GLEW** | BSD / MIT-like |
 | **GLU** | dépend de la distribution (non redistribué ici) |
-
----
-
-## ✨ Exemple de lancement rapide
-Sous Linux :
-```bash
-sudo apt install build-essential cmake libsdl2-dev libglew-dev libglu1-mesa-dev
-git clone https://github.com/EtriZe/VisualDuneGenerator.git
-cd dune-viewer && mkdir build && cd build
-cmake .. && make -j && ./dune_viewer
-```
-Sous Windows (MSYS2) :
-```bash
-pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-SDL2 mingw-w64-x86_64-glew
-git clone https://github.com/EtriZe/VisualDuneGenerator.git
-cd dune-viewer && mkdir build && cd build
-cmake -G "MinGW Makefiles" .. && mingw32-make && ./dune_viewer.exe
-```
 
 ---
 
