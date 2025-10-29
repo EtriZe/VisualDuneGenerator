@@ -154,7 +154,7 @@ Vertices are rendered using OpenGL, either in **wireframe** or **filled** mode.
 ```bash
 sudo apt install build-essential cmake libsdl2-dev libglew-dev libglu1-mesa-dev
 git clone https://github.com/EtriZe/VisualDuneGenerator.git
-cd dune-viewer && mkdir build && cd build
+cd VisualDuneGenerator && mkdir build && cd build
 cmake .. && make -j && ./dune_viewer
 ```
 
@@ -162,7 +162,7 @@ cmake .. && make -j && ./dune_viewer
 ```bash
 pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake mingw-w64-x86_64-SDL2 mingw-w64-x86_64-glew
 git clone https://github.com/EtriZe/VisualDuneGenerator.git
-cd dune-viewer && mkdir build && cd build
+cd VisualDuneGenerator && mkdir build && cd build
 cmake -G "MinGW Makefiles" .. && mingw32-make && ./dune_viewer.exe
 ```
 
