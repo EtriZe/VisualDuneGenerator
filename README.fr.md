@@ -146,5 +146,5 @@ Les vertices sont ensuite rendus sous OpenGL, en mode **wireframe** ou **filled*
 ---
 
 ## 🧑‍💻 Auteur
-Développé par Valentin Barrère.  
+Développé par EtriZe.  
 Basé sur **Dear ImGui (MIT)** et **SDL2 (zlib)**.
