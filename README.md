@@ -140,7 +140,7 @@ Vertices are rendered using OpenGL, either in **wireframe** or **filled** mode.
 ## 📜 Licenses
 | Component | License |
 |------------|----------|
-| **Your code (Dune Viewer)** | MIT |
+| **My Code** | MIT |
 | **Dear ImGui** | MIT (© Omar Cornut) |
 | **SDL2** | zlib |
 | **GLEW** | BSD / MIT-like |
