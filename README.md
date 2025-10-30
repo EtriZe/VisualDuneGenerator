@@ -108,7 +108,7 @@ A window titled **"Dune Studio — Advanced Viewer"** opens with:
 
 ## 🏗️ Project Structure
 ```
-dune-viewer/
+VisualDuneGenerator/
 ├── dune_viewer.cpp       ← main source file
 ├── imgui/                ← Dear ImGui (as folder or submodule)
 │   ├── imgui.cpp, backends/, etc.
