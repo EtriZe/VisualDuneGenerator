@@ -80,7 +80,7 @@ Une fenêtre “**Dune Studio — Advanced Viewer**” s’ouvre, avec :
    ```
 3. Cloner le projet :
    ```bash
-   git clone https://github.com/<ton-utilisateur>/dune-viewer.git
+   git clone https://github.com/EtriZe/VisualDuneGenerator.git
    cd dune-viewer
    mkdir build && cd build
    cmake -G "MinGW Makefiles" ..
@@ -104,7 +104,7 @@ Une fenêtre “**Dune Studio — Advanced Viewer**” s’ouvre, avec :
 
 ## 🏗️ Structure du projet
 ```
-dune-viewer/
+VisualDuneGenerator/
 ├── dune_viewer.cpp       ← code principal
 ├── imgui/                ← dossier Dear ImGui (ou submodule)
 │   ├── imgui.cpp, backends/, etc.
