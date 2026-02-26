@@ -4,7 +4,8 @@
 Le programme permet de modifier tous les paramètres en temps réel via **Dear ImGui**, et d’observer instantanément le résultat en 3D.
 
 Exemple : 
-![image](https://github.com/user-attachments/assets/9cbadd41-8f78-45f6-8cb2-83407c09b939)
+<img width="1910" height="1028" alt="image" src="https://github.com/user-attachments/assets/4513c7d3-6199-4524-ba02-8943eea7dda3" />
+
 
 ---
 
