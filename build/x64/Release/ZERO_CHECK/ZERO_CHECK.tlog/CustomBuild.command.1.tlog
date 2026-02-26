@@ -1,0 +1,10 @@
+^D:\FORK\VISUALDUNEGENERATOR\BUILD\CMAKEFILES\87B12BF058EC27CBAE9047A687066BD7\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Fork/VisualDuneGenerator -BD:/Fork/VisualDuneGenerator/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/Fork/VisualDuneGenerator/build/dune_viewer.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

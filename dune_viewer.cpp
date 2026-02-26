@@ -9,7 +9,7 @@
 
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
-#include <GL/glu.h>
+#include <GL/gl.h>
 #include "imgui.h"
 #include "backends/imgui_impl_sdl2.h"
 #include "backends/imgui_impl_opengl2.h"
@@ -27,6 +27,23 @@
 #include <ctime>
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
+
+static void LoadPerspective(float fovyDeg, float aspect, float zNear, float zFar)
+{
+    const float pi = 3.14159265358979323846f;
+    const float fovyRad = fovyDeg * (pi / 180.0f);
+    const float f = 1.0f / tanf(fovyRad * 0.5f);
+
+    float m[16] = {};
+    m[0]  = f / aspect;
+    m[5]  = f;
+    m[10] = (zFar + zNear) / (zNear - zFar);
+    m[11] = -1.0f;
+    m[14] = (2.0f * zFar * zNear) / (zNear - zFar);
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadMatrixf(m);
+}
 
 // =========================================================
 // --- Perlin Noise / FBM ---
@@ -827,7 +844,7 @@ int main(){
     glViewport(0,0,winW,winH);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(60.0, (double)winW/(double)winH, 0.1, 4000.0);
+    LoadPerspective(60.0f, (float)winW / (float)winH, 0.1f, 4000.0f);
     glMatrixMode(GL_MODELVIEW);
     glEnable(GL_DEPTH_TEST);
     glClearColor(0.2f,0.25f,0.3f,1.f);
@@ -904,7 +921,7 @@ int main(){
                 glViewport(0,0,winW,winH);
                 glMatrixMode(GL_PROJECTION);
                 glLoadIdentity();
-                gluPerspective(60.0, (double)winW/(double)winH, 0.1, 4000.0);
+                LoadPerspective(60.0f, (float)winW / (float)winH, 0.1f, 4000.0f);
                 glMatrixMode(GL_MODELVIEW);
             }
 
