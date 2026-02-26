@@ -1,18 +1,13 @@
-// src/UI.h
 #pragma once
 
 #include <string>
+#include <cstdint>
 #include "imgui.h"
-
 #include "Params.h"
 
-#if defined(__APPLE__)
-#include <OpenGL/gl.h>
-#else
-#include <GL/gl.h>
-#endif
-
 namespace dune {
+
+using TextureHandle = std::uint32_t; // correspond à GLuint dans la pratique
 
 struct UiState {
     bool needUpdate = false;
@@ -36,7 +31,7 @@ public:
     static void drawHeightmapWindow(
         const Params& P,
         UiState& S,
-        GLuint heightTex,
+        TextureHandle heightTex,
         int atlasW, int atlasH,
         float minH, float maxH);
 };

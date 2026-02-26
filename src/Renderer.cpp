@@ -1,7 +1,7 @@
 // src/Renderer.cpp
 #include "Renderer.h"
 
-#include <GL/gl.h>
+#include "GLCompat.h"
 #include <cmath>
 #include <algorithm>
 

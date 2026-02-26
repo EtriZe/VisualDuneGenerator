@@ -8,8 +8,8 @@ if (MSVC)
   set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
 
-find_package(SDL2 REQUIRED)
-find_package(GLEW REQUIRED)
+find_package(SDL2 CONFIG REQUIRED)
+find_package(GLEW CONFIG REQUIRED)
 find_package(OpenGL REQUIRED)
 
 # --- Sources ---
@@ -41,23 +41,13 @@ target_include_directories(dune_viewer PRIVATE
   ${CMAKE_SOURCE_DIR}/imgui/backends
 )
 
-# SDL2 flags via sdl2-config (comme tu faisais)
-execute_process(COMMAND sdl2-config --cflags OUTPUT_VARIABLE SDL2_CFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
-execute_process(COMMAND sdl2-config --libs   OUTPUT_VARIABLE SDL2_LIBS   OUTPUT_STRIP_TRAILING_WHITESPACE)
-separate_arguments(SDL2_CFLAGS)
-separate_arguments(SDL2_LIBS)
-
-target_compile_options(dune_viewer PRIVATE ${SDL2_CFLAGS})
-target_link_libraries(dune_viewer PRIVATE ${SDL2_LIBS})
-
 target_compile_definitions(dune_viewer PRIVATE
   SDL_MAIN_HANDLED
 )
 
-# Si tu utilises GLEW en statique, garde GLEW_STATIC, sinon enlève cette ligne
-# target_compile_definitions(dune_viewer PRIVATE GLEW_STATIC)
-
 target_link_libraries(dune_viewer PRIVATE
+  SDL2::SDL2
+  SDL2::SDL2main
   GLEW::GLEW
   OpenGL::GL
 )

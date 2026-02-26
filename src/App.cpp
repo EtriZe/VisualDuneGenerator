@@ -206,7 +206,7 @@ namespace dune
             ImGui::NewFrame();
 
             UI::drawControls(P_, W_, H_, state_, cfgPath_);
-            UI::drawHeightmapWindow(P_, state_, heightTex_, atlasW_, atlasH_, lastMinH_, lastMaxH_);
+            UI::drawHeightmapWindow(P_, state_, (dune::TextureHandle)heightTex_, atlasW_, atlasH_, lastMinH_, lastMaxH_);
 
             bool doRebuild = state_.needRebuild;
             bool doUpdate = state_.needUpdate;

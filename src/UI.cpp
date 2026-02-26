@@ -161,11 +161,11 @@ namespace dune
     }
 
     void UI::drawHeightmapWindow(
-        const Params &P,
-        UiState &S,
-        GLuint heightTex,
-        int atlasW, int atlasH,
-        float minH, float maxH)
+    const Params& P,
+    UiState& S,
+    TextureHandle heightTex,
+    int atlasW, int atlasH,
+    float minH, float maxH)
     {
         ImGuiIO &io = ImGui::GetIO();
         const float margin = 12.0f;
