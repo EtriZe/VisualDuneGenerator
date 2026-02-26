@@ -8,7 +8,8 @@
 All parameters can be modified in real time through **Dear ImGui**, allowing instant visual feedback in 3D.
 
 Exemple : 
-![image](https://github.com/user-attachments/assets/9cbadd41-8f78-45f6-8cb2-83407c09b939)
+<img width="1910" height="1028" alt="image" src="https://github.com/user-attachments/assets/2c789a97-3a69-4bb7-902d-4db4cb8a35e7" />
+
 
 
 ---
