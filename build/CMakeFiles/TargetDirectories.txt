@@ -1,3 +1,0 @@
-D:/Fork/VisualDuneGenerator/build/CMakeFiles/dune_viewer.dir
-D:/Fork/VisualDuneGenerator/build/CMakeFiles/ALL_BUILD.dir
-D:/Fork/VisualDuneGenerator/build/CMakeFiles/ZERO_CHECK.dir
