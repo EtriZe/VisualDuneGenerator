@@ -176,7 +176,7 @@ namespace dune
         {
             state_.requestExportPNG = false;
             std::string fname = HeightmapIO::makeTimestampedFilename("heightmap_chunk_r0_c0", "png");
-            if (!heightChunk00_.empty() && HeightmapIO::exportPNG(heightChunk00_, W_, H_, fname))
+            if (!heightChunk00_.empty() && HeightmapIO::exportRAW16(heightChunk00_, W_, H_, "heightmap.r16"))
                 state_.lastExportPath = fname;
             else
                 state_.lastExportPath = "Export PNG failed";

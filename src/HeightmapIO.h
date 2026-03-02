@@ -15,6 +15,8 @@ public:
         const std::vector<float>& heights, int W, int H,
         std::vector<unsigned char>& outRGBA,
         float* outMin=nullptr, float* outMax=nullptr);
+        
+    static bool exportRAW16(const std::vector<float>& heights, int W, int H, const std::string& filename);
 
     static void buildChunkAtlasRGBA8(
         const ChunkGrid& grid, int W, int H, int gapPx,
