@@ -183,14 +183,14 @@ namespace dune
         }
 
         // All chunks
-        if (state_.requestExportAllChunksPNG)
+        if (state_.requestExportAllChunksRAW16)
         {
-            state_.requestExportAllChunksPNG = false;
-            std::string prefix = HeightmapIO::makeTimestampedFilename("heightmap_chunks", "tmp");
+            state_.requestExportAllChunksRAW16 = false;
+            std::string prefix = HeightmapIO::makeTimestampedFilename("heightmap_chunks", "r16");
             if (prefix.size() >= 4)
                 prefix = prefix.substr(0, prefix.size() - 4);
             std::string msg;
-            HeightmapIO::exportAllChunksPNG(chunkGrid_, W_, H_, prefix, msg);
+            HeightmapIO::exportAllChunksRAW16(chunkGrid_, W_, H_, prefix, msg, P_.render_intensity, P_.render_maxHeightMeters, P_.render_unrealHalfRange);
             state_.lastExportPath = msg + " | prefix: " + prefix;
         }
     }

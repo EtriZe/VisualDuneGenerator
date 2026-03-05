@@ -48,9 +48,9 @@ namespace dune
 
         if (ImGui::CollapsingHeader("Affinage des Crêtes", ImGuiTreeNodeFlags_DefaultOpen))
         {
-            S.needUpdate |= ImGui::SliderFloat("Crest Smoothing", &P.crestSmoothing, 0.0f, 1.0f);
-            S.needUpdate |= ImGui::SliderFloat("Crest Sharpen", &P.crestSharpen, 0.0f, 1.0f);
-            S.needUpdate |= ImGui::SliderFloat("Crest Width", &P.crestWidth, 1.0f, 4.0f);
+            S.needUpdate |= ImGui::SliderFloat("Crest Smoothing", &P.crestSmoothing, 0.0f, 25.0f);
+            S.needUpdate |= ImGui::SliderFloat("Crest Sharpen", &P.crestSharpen, 0.0f, 25.0f);
+            S.needUpdate |= ImGui::SliderFloat("Crest Width", &P.crestWidth, 1.0f, 20.0f);
         }
 
         if (ImGui::CollapsingHeader("Exploration du bruit", ImGuiTreeNodeFlags_DefaultOpen))
@@ -75,11 +75,6 @@ namespace dune
                 S.needUpdate = true;
 
             ImGui::Text("Total chunks: %d", std::max(1, P.chunkCols) * std::max(1, P.chunkRows));
-
-            if (ImGui::Button("Export all chunks PNG"))
-            {
-                S.requestExportAllChunksPNG = true;
-            }
         }
 
         if (ImGui::CollapsingHeader("Rognage"))
@@ -107,6 +102,13 @@ namespace dune
             ImGui::SliderFloat("Zoom", &P.camZoom, 50.f, 5000.f);
             ImGui::SliderFloat("Pan X", &P.camPanX, -2000.f, 2000.f);
             ImGui::SliderFloat("Pan Y", &P.camPanY, -2000.f, 2000.f);
+        }
+
+        if (ImGui::CollapsingHeader("Render UE5"))
+        {
+            ImGui::SliderFloat("Intensity", &P.render_intensity, 0.f, 1.f);
+            ImGui::SliderFloat("Max Height (meters)", &P.render_maxHeightMeters, 0.1f, 100.f);
+            ImGui::SliderFloat("Unreal Half Range", &P.render_unrealHalfRange, 0.1f, 100.f);
         }
 
         ImGui::Separator();
@@ -177,11 +179,18 @@ namespace dune
         ImGuiWindowFlags flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse;
         ImGui::Begin("Heightmap", nullptr, flags);
 
-        if (ImGui::Button("Export heightmap (PGM)"))
-            S.requestExportPGM = true;
+        // if (ImGui::Button("Export heightmap (PGM)"))
+        //     S.requestExportPGM = true;
+
+        if (ImGui::Button("Export all chunks"))
+        {
+            S.requestExportAllChunksRAW16 = true;
+        }
+
         ImGui::SameLine();
-        if (ImGui::Button("Export heightmap (PNG)"))
-            S.requestExportPNG = true;
+        // if (ImGui::Button("Export PNG (RAW 16)"))
+        //     S.requestExportPNG = true;
+            
         ImGui::SameLine();
         ImGui::Text("min %.2f  max %.2f", minH, maxH);
 

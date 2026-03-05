@@ -71,6 +71,11 @@ namespace dune
         float crestSharpen = 0.0f;
         float crestWidth = 1.0f;
 
+        //Pour le rendu ue5
+        float render_intensity = 0.03f;
+        float render_maxHeightMeters = 30.0f;
+        float render_unrealHalfRange = 1.0f;
+
         void clampSafety()
         {
             gridW = std::max(2, gridW);

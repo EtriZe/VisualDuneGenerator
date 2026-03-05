@@ -217,50 +217,45 @@ namespace dune
     bool HeightmapIO::exportRAW16(const std::vector<float> &heights,
                                   int width,
                                   int height,
-                                  const std::string &filename)
+                                  const std::string &filename,
+                                  const float intensity,
+                                  const float maxHeightMeters,
+                                  const float unrealHalfRange)
     {
         if (heights.empty() || width <= 0 || height <= 0)
             return false;
-
-        if (static_cast<int>(heights.size()) != width * height)
-            return false;
-
-        float mn = *std::min_element(heights.begin(), heights.end());
-        float mx = *std::max_element(heights.begin(), heights.end());
-
-        if (std::abs(mx - mn) < 1e-8f)
+        if ((int)heights.size() != width * height)
             return false;
 
         std::ofstream file(filename, std::ios::binary);
         if (!file.is_open())
             return false;
 
-        // marge (headroom) : 0.2 = 20% laissé en bas et en haut
-        const float maxHeightMeters = 30.0f;  // hauteur max voulue
-        const float unrealHalfRange = 1.0f; // plage interne UE
-
         for (int i = 0; i < width * height; ++i)
         {
-            float hMeters = heights[i]; // ta vraie hauteur
+            float hMeters = heights[i];
 
-            // clamp à la hauteur max voulue
+            // 1) Réduction d'intensité à l'export
+            hMeters *= intensity;
+
+            // 2) Clamp (évite overflow)
             hMeters = std::clamp(hMeters, -maxHeightMeters, maxHeightMeters);
 
-            // convertir en unité UE landscape (-256..+256)
+            // 3) Map vers [-unrealHalfRange .. +unrealHalfRange]
             float landscapeValue = (hMeters / maxHeightMeters) * unrealHalfRange;
 
-            // convertir vers 16-bit centré
+            // 4) Map vers [0..1]
             float normalized = (landscapeValue + unrealHalfRange) / (2.0f * unrealHalfRange);
+            normalized = std::clamp(normalized, 0.0f, 1.0f);
 
-            uint16_t value = static_cast<uint16_t>(std::round(normalized * 65535.0f));
+            // 5) Quantification U16
+            uint16_t value = (uint16_t)std::lround(normalized * 65535.0f);
 
-            uint8_t lo = value & 0xFF;
-            uint8_t hi = (value >> 8) & 0xFF;
-
-            file.put(lo);
-            file.put(hi);
+            // 6) Écriture little-endian
+            file.put((char)(value & 0xFF));
+            file.put((char)((value >> 8) & 0xFF));
         }
-        file.close();
+
         return true;
     }
 
@@ -323,6 +318,42 @@ namespace dune
         }
 
         outMessage = "Export PNG chunks: " + std::to_string(okCount) + "/" + std::to_string(total);
+        return allOk;
+    }
+
+    bool HeightmapIO::exportAllChunksRAW16(
+        const ChunkGrid &grid, int W, int H,
+        const std::string &basePrefix,
+        std::string &outMessage,
+        const float intensity,
+        const float maxHeightMeters,
+        const float unrealHalfRange)
+    {
+        if (grid.heights.empty())
+        {
+            outMessage = "Aucun chunk a exporter";
+            return false;
+        }
+
+        bool allOk = true;
+        int okCount = 0;
+        int total = grid.cols * grid.rows;
+
+        for (int r = 0; r < grid.rows; ++r)
+        {
+            for (int c = 0; c < grid.cols; ++c)
+            {
+                const auto &h = grid.heights[ChunkGrid::index(c, r, grid.cols)];
+                std::string filename = basePrefix + "_r" + std::to_string(r) + "_c" + std::to_string(c) + ".r16";
+
+                if (exportRAW16(h, W, H, filename, intensity, maxHeightMeters, unrealHalfRange))
+                    okCount++;
+                else
+                    allOk = false;
+            }
+        }
+
+        outMessage = "Export RAW16 chunks: " + std::to_string(okCount) + "/" + std::to_string(total);
         return allOk;
     }
 

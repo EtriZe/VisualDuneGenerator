@@ -69,6 +69,10 @@ bool ConfigKV::save(const Params& P, const std::string& path)
     f << "crestSharpen=" << P.crestSharpen << "\n";
     f << "crestWidth=" << P.crestWidth << "\n";
 
+    f << "crestWidth=" << P.render_intensity << "\n";
+    f << "crestWidth=" << P.render_maxHeightMeters << "\n";
+    f << "crestWidth=" << P.render_unrealHalfRange << "\n";
+
     return true;
 }
 
@@ -143,6 +147,10 @@ bool ConfigKV::load(Params& P, const std::string& path)
         else if(key == "crestSmoothing" && parseFloatSafe(val, fv)) P.crestSmoothing = fv;
         else if(key == "crestSharpen" && parseFloatSafe(val, fv)) P.crestSharpen = fv;
         else if(key == "crestWidth" && parseFloatSafe(val, fv)) P.crestWidth = fv;
+
+        else if(key == "render_intensity" && parseFloatSafe(val, fv)) P.render_intensity = fv;
+        else if(key == "render_maxHeightMeters" && parseFloatSafe(val, fv)) P.render_maxHeightMeters = fv;
+        else if(key == "render_unrealHalfRange" && parseFloatSafe(val, fv)) P.render_unrealHalfRange = fv;
     }
 
     P.clampSafety();

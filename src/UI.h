@@ -15,7 +15,7 @@ struct UiState {
 
     bool requestExportPGM = false;
     bool requestExportPNG = false;
-    bool requestExportAllChunksPNG = false;
+    bool requestExportAllChunksRAW16 = false;
 
     bool autoLoadConfigOnStart = true;
     bool autoSaveConfigOnExit  = true;
